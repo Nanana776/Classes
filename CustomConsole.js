@@ -14,5 +14,7 @@ class CustomConsole{
       }
     },[])
   }
-  
+  clearHistory(){
+    this.logs=[];
+  }
 }
