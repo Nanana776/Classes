@@ -5,7 +5,7 @@ class CoffeeShop{
     constructor(name, menu){
         this.#name=name;
         this.#menu=menu;
-        this.orders=[];
+        this.#orders=[];
     }
    getName(){
     return this.#name;
@@ -24,22 +24,35 @@ class CoffeeShop{
     }
    }
    fulfillOrder(){
-    if(this.#orders>0) {
+    if(this.#orders.length > 0) {
     const done_order=this.#orders.shift();
-    return `The ${done_order} is ready!`
+    return `The ${done_order.item} is ready!`
    }
    else {
     return "All orders have been fulfilled!"
    }
  }
  listOrders(){
-    return this.#orders;
+    return this.#orders.map(order=>order.item);
  }
   dueAmount(){
     return this.#orders.reduce((total, order) => {
-        const {price}=this.#menu.find(({item}) => item===order);
+        const {price} = order;
         return total+price;
   },0);
-}
-       }
+ }
+  cheapestItem(){
+    const cheapest= this.#menu.reduce((minItem, currItem)=>{
+        return (currItem.price < minItem.price)? currItem : minItem},this.#menu[0]);
+        return cheapest.item;
+    }
+    drinksOnly(){
+        return this.#menu.filter(({type})=>type==="drinks").map(({item})=>item);
+    }
+    foodOnly(){
+        return this.#menu.filter(({type})=>type==="food").map(({item})=>item);
+    }
+  }
+
+   
   
