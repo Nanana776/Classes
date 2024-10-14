@@ -30,10 +30,10 @@
          return "game restarted";
              }
 
-      }
+    }
 
-      const myShiritori = new Shiritori();
-      
+    const myShiritori = new Shiritori();
+
      myShiritori.play("apple"); // ["apple"]
      myShiritori.play("ear"); // ["apple", "ear"]
      myShiritori.play("rhino"); // ["apple", "ear", "rhino"]
