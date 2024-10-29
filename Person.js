@@ -44,4 +44,8 @@ class Person{
     set gender(newGender){
         return (newGender==="female" || newGender==="male")? this._gender=newGender : this._gender=gender;
     }
+    
+    toString(){
+        return `${this._firstName} ${this._lastName}, ${this._age} years old.`;
+    }
 }
