@@ -173,5 +173,28 @@ class Library {
             this.books.push(new LibraryBook(newBook.getTitle(), newBook.getAuthor(), newBook.bookId, 1));
         }
     }
+
+
+addBooks(newBooks) {
+    newBooks.forEach(book => this.addBook(book));
+    return this.books;
+}
+
+
+checkReaderId(readerId) {
+    return this.readers.some(reader => reader.getReaderId() === readerId);
+}
+
+
+lendBook(book, readerId) {
+    const existingBook = this.books.find(book=> book.isTheSameBook(book) && book.getQuantity() > 0);
+    if (existingBook && this.checkReaderId(readerId)) {
+        existingBook.decreaseQuantityBy(1);
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 14); 
+        return new ReaderBook(existingBook.getTitle(), existingBook.getAuthor(), existingBook.getBookId());
+    return null;
+}
+}
 }
 
