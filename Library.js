@@ -92,8 +92,6 @@ class Book{
     }
     }
 
-
-
 let author = new Author("J. K. Rowling", "abc@gmail.com", "fEmale");
 console.log(author.gender); // female
 console.log(author.name); // J. K. Rowling
