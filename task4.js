@@ -28,3 +28,18 @@ class Book {
         return this._title === book.getTitle() && this._author === book.getAuthor();
     }
 }
+
+class LibraryBookBase extends Book {
+    constructor(title, author, bookId) {
+        super(title, author);
+        this._bookId = bookId;
+    }
+
+    getBookId() {
+        return this._bookId;
+    }
+
+    toString() {
+        return `${super.toString()}, ID: ${this._bookId}`;
+    }
+}
