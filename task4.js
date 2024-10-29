@@ -43,3 +43,34 @@ class LibraryBookBase extends Book {
         return `${super.toString()}, ID: ${this._bookId}`;
     }
 }
+
+class LibraryBook extends LibraryBookBase {
+    constructor(title, author, bookId, quantity) {
+        super(title, author, bookId);
+        this._quantity = quantity;
+    }
+
+    getQuantity() {
+        return this._quantity;
+    }
+
+    setQuantity(value) {
+      return (typeof value==="number") ? this._quantity = value: this._quantity=quantity;
+    }
+
+    increaseQuantityBy(amount) {
+        this._quantity += amount;
+    }
+
+    decreaseQuantityBy(amount) {
+        if (this._quantity >= amount) {
+            this._quantity -= amount;
+        } else {
+            console.error("Insufficient quantity to decrease.");
+        }
+    }
+
+    toString() {
+        return `${super.toString()}, Quantity: ${this._quantity}`;
+    }
+}
