@@ -103,4 +103,46 @@ class ReaderBook extends LibraryBookBase {
     }
 }
 
+class Reader {
+    constructor(firstName, lastName, readerId) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._readerId = readerId;
+        this.books = [];
+    }
 
+    getFirstName() {
+        return this._firstName;
+    }
+
+    getLastName() {
+        return this._lastName;
+    }
+
+    getReaderId() {
+        return this._readerId;
+    }
+
+    getBooks() {
+        return this.books;
+    }
+
+    setFirstName(firstName) {
+        this._firstName = firstName;
+    }
+
+    setLastName(lastName) {
+        this._lastName = lastName;
+    }
+
+    toString() {
+        return `${this._firstName} ${this._lastName}, ID: ${this._readerId}`;
+    }
+
+    borrowBook(book, library) {
+        const borrowedBook = library.lendBook(book, this._readerId);
+        if (borrowedBook) {
+            this.books.push(borrowedBook);
+        }
+    }
+}
