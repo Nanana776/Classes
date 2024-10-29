@@ -74,3 +74,33 @@ class LibraryBook extends LibraryBookBase {
         return `${super.toString()}, Quantity: ${this._quantity}`;
     }
 }
+
+class ReaderBook extends LibraryBookBase {
+    constructor(title, author, bookId, expirationDate) {
+        super(title, author, bookId);
+        this.expirationDate = expirationDate;
+        this.isReturned = false;
+    }
+
+    getExpirationDate() {
+        return this.expirationDate;
+    }
+
+    isReturned() {
+        return this.isReturned;
+    }
+
+    setExpirationDate(expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    returnBook() {
+        this.isReturned = true;
+    }
+
+    toString() {
+        return `${super.toString()}, Expiration Date: ${this.expirationDate}, Returned: ${this.isReturned}`;
+    }
+}
+
+
