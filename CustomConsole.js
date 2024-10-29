@@ -30,5 +30,20 @@ class CustomConsole{
       return log_text;
     }
   }
+  history(){
+    return this.#logs.join('\n') || ""; 
+  }
+  
+  clearHistory(){
+    this.#logs=[];
+  }
 }
+const myConsole = new CustomConsole('Regular');
+const fancyConsole = new CustomConsole('Fancy');
+myConsole.log([0, 1, 2, 3]) // "Regular: [0,1,2,3]"
+fancyConsole.log({ a:1, b:2 }) // "Fancy: {a:1, b:2}"
+myConsole.log("ok : ", 1, 2, 3) //➞ "ok : 1, 2, 3"
+myConsole.clearHistory() // true
+myConsole.history()// ""
+
   
