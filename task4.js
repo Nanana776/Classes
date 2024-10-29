@@ -146,3 +146,32 @@ class Reader {
         }
     }
 }
+
+class Library {
+    constructor() {
+        this.books = [];
+        this.readers = [];
+    }
+
+    getBooks() {
+        return this.books;
+    }
+
+    getReaders() {
+        return this.readers;
+    }
+
+    doHaveBook(requestedBook) {
+        return this.books.some(book => book.isTheSameBook(requestedBook) && book.getQuantity() > 0);
+    }
+
+    addBook(newBook) {
+        const existingBook = this.books.find(book => book.isTheSameBook(newBook));
+        if (existingBook) {
+            existingBook.increaseQuantityBy(1);
+        } else {
+            this.books.push(new LibraryBook(newBook.getTitle(), newBook.getAuthor(), newBook.bookId, 1));
+        }
+    }
+}
+
